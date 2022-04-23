@@ -15,6 +15,19 @@ const cors = require('cors');
 
 connectDb();
 
+// const code = require('./models/VeriCode')
+// const test = async () => {
+//     const otp = await code.findOne({ OTP: "123456" });
+//     const date2 = otp._id.getTimestamp()
+//     const date = new Date();
+//     console.log(date.getTime())
+//     console.log(date2.getTime())
+//     console.log(date)
+//     console.log(date2)
+// }
+// test()
+
+
 const app = express();
 
 app.use(cors());
@@ -26,8 +39,8 @@ app.use(passport.initialize());
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
- 
 
+app.use(express.static('public'));
 
 app.get('/', (req, res, next) => {
     res.status(200).json({

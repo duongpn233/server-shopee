@@ -16,10 +16,25 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    phone: {
+        type: String
+    },
+    sex: {
+        type: String,
+        enum: ['male', 'female', 'other']
+    },
     authType: {
         type: String,
         enum: ['local', 'google', 'facebook'],
         default: 'local'
+    },
+    avtImg: {
+        type: String
+    },
+    dateOfBirth: {
+        day: { type: Number },
+        month: { type: Number },
+        year: { type: Number }
     }
 })
 
@@ -34,7 +49,7 @@ UserSchema.pre('save', async function (next) {
             next(error);
         }
     }
-    else{
+    else {
         next();
     }
 });

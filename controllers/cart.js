@@ -2,7 +2,6 @@ const Cart = require('../models/Cart');
 
 const getCartUser = async (req, res, next) => {
     try {
-        console.log(req.user);
         const userId = req.user._id;
         const cartUser = await Cart.find({ userId: userId });
         res.status(200).json(cartUser);
